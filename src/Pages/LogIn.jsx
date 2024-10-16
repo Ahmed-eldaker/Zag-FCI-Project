@@ -1,0 +1,54 @@
+import React from "react";
+import * as yup from "yup";
+const schema = yup.object().shape({
+    email: yup.string().email("invalid email format").required(),
+    password: yup.string().min(6).max(12).required(),
+  });
+export default function LogIn() {
+  return (
+    <div>
+      {/* Form element with an onSubmit event handler */}
+      <form>
+        {/* Email input field */}
+        <div className="form-group">
+          <label htmlFor="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+          <small id="emailHelp" className="form-text text-muted">
+            We'll never share your email with anyone else.
+          </small>
+        </div>
+        {/* Password input field */}
+        <div className="form-group">
+          <label htmlFor="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+          />
+        </div>
+        {/* Checkbox input field */}
+        <div className="form-check">
+          <input
+            type="checkbox"
+            className="form-check-input"
+            id="exampleCheck1"
+          />
+          <label className="form-check-label" htmlFor="exampleCheck1">
+            Check me out
+          </label>
+        </div>
+        {/* Submit button */}
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+}
