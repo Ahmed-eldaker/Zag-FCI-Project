@@ -1,9 +1,7 @@
 import React from "react";
-import * as yup from "yup";
-const schema = yup.object().shape({
-    email: yup.string().email("invalid email format").required(),
-    password: yup.string().min(6).max(12).required(),
-  });
+// import  from "yup";
+// import { object, string } from "yup";
+
 export default function LogIn() {
   return (
     <div>
@@ -19,9 +17,6 @@ export default function LogIn() {
             aria-describedby="emailHelp"
             placeholder="Enter email"
           />
-          <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small>
         </div>
         {/* Password input field */}
         <div className="form-group">

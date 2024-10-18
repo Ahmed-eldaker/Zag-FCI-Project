@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import * as yup from "yup";
 
-const schema = yup.object().shape({
-  email: yup.string().email("invalid email format").required(),
-  password: yup.string().min(6).max(12).required(),
+const schema = object().shape({
+  email: string().email("invalid email format").required(),
+  password: string().min(6).max(12).required(),
 });
 
 export default function Signin() {
@@ -45,6 +45,7 @@ export default function Signin() {
     //     const newErrors={}
     // }
   };
+
   return (
     <>
       <form onSubmit={handleSubmit} method="post">
