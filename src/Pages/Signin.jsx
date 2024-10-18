@@ -1,15 +1,16 @@
 import React, { useRef, useState } from "react";
 import * as yup from "yup";
-
+import { object, string } from "yup";
 const schema = object().shape({
   email: string().email("invalid email format").required(),
   password: string().min(6).max(12).required(),
 });
 
 export default function Signin() {
-  const [state, setState] = useState({ email: "", password: "" });
+  const [state, setState] = useState({ email: "", password: "" }); /////////1
   const [errors, setErrors] = useState({});
   const handleSubmit = (e) => {
+    //////////3
     e.preventDefault();
     console.log({ email: state.email, password: state.password });
     if (!validate()) return;
@@ -19,21 +20,22 @@ export default function Signin() {
     });
   };
   const handleChange = (e) => {
+    /////////2
     const clonedState = { ...state };
     clonedState[e.target.name] = e.target.value;
     validate(clonedState);
     setState(clonedState);
   };
   const validate = async (obj) => {
-    // const newErrors = {};
-    // if (!state.email) {
-    //   newErrors.email = "Email is required";
-    // }
-    // if (!state.password) {
-    //   newErrors.password = "password is required";
-    // }
-    // setErrors(newErrors);
-    // return Object.keys(newErrors).length ? false : true;
+    const newErrors = {};
+    if (!state.email) {
+      newErrors.email = "Email is required";
+    }
+    if (!state.password) {
+      newErrors.password = "password is required";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length ? false : true;
     //     Schema.validate(obj,{abortEarly:})
     //     try {
     //         // Validate the object according to the schema
